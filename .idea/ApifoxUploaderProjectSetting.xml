@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ApifoxUploaderProjectSetting">
+    <option name="apifoxAccessToken" value="APS-EiFT68sFAzWwX2bYBfcPhv4W74ehkJkS" />
+    <option name="apifoxApiOverwriteMode" value="覆盖所有字段" />
+    <option name="apifoxProjectIds">
+      <array>
+        <option value="# ModuleName:ProjectID" />
+        <option value="curriculum-arrangement-service:1571080,排课管理" />
+        <option value="course-manage-service:1571080,选课管理" />
+        <option value="jackson:2534635" />
+        <option value="wisdomebook:2717523" />
+        <option value="mid-platform:3244488" />
+        <option value="portal-server:3640543" />
+      </array>
+    </option>
+    <option name="yapiTokens" value="" />
+  </component>
+</project>
