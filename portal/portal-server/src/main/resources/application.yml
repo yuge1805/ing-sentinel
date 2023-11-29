@@ -19,11 +19,38 @@ spring:
         # 会在机器上启动一个 Http Server，该 Server 会与 Sentinel 控制台做交互。
         # 比如 Sentinel 控制台添加了 1 个限流规则，会把规则数据 push 给这个 Http Server 接收，Http Server 再将规则注册到 Sentinel 中。
         port: 8719
+      datasource:
+        # 限流
+        flow:
+          nacos:
+            server-addr: localhost:8848
+            namespace:
+            group-id: SENTINEL_GROUP
+            data-id: ${spring.application.name}-flow-rules
+            data-type: json
+            rule-type: flow
+        # 熔断降级
+        degrade:
+          nacos:
+            server-addr: localhost:8848
+            namespace:
+            group-id: SENTINEL_GROUP
+            data-id: ${spring.application.name}-degrade-rules
+            data-type: json
+            rule-type: degrade
+
+
+
 
 # feign配置
 feign:
   sentinel:
     enabled: true
+
+# logging配置
+logging:
+  level:
+    com.alibaba.csp: warn
 
 
 

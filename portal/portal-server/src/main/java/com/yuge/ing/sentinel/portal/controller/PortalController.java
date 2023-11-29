@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PortalController {
 
     @GetMapping("/hello")
-    public String hello() {
+    public String hello() throws InterruptedException {
         return "Hello portal!";
     }
 
