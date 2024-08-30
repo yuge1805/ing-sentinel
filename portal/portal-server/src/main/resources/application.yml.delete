@@ -3,11 +3,21 @@
 # 应用服务 WEB 访问端口
 server:
   port: 18080
+  servlet:
+    context-path: /portal
 
 spring:
   application:
     name: portal-server
+  config:
+    import:
+      - nacos:portal-server.yml?refresh=true
   cloud:
+    nacos:
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+      discovery:
+        server-addr: localhost:8848
     sentinel:
       # 取消Sentinel控制台懒加载
       # 默认情况下 Sentinel 会在客户端首次调用的时候进行初始化，开始向控制台发送心跳包

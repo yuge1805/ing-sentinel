@@ -6,7 +6,7 @@
         <groupId>com.yuge.ing.sentinel</groupId>
         <artifactId>portal</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>com.yuge.ing.sentinel</groupId>
     <artifactId>portal-server</artifactId>
@@ -21,6 +21,28 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- nacos config -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <!-- 集成nacos config依赖 -->
+        <!-- Spring Cloud 2020之后，可以不依赖spring-cloud-starter-bootstrap，既不声明bootstrap.yml -->
+        <!-- 配置application.yml中的spring.config.import=nacos:property-file-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+
+        <!-- nacos discovery -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <!-- sentinel -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-alibaba-sentinel-datasource</artifactId>
@@ -33,6 +55,7 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
+        <!-- sentinel -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

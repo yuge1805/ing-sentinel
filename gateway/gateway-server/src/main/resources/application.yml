@@ -1,0 +1,38 @@
+﻿server:
+  port: 19999
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    nacos:
+#      config:
+#        server-addr: localhost:8848
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      # 取消Sentinel控制台懒加载
+      # 默认情况下 Sentinel 会在客户端首次调用的时候进行初始化，开始向控制台发送心跳包
+      # 配置 sentinel.eager=true 时，取消Sentinel控制台懒加载功能
+      eager: true
+      # Sentinel 控制台地址
+      transport:
+        dashboard: localhost:8080
+        # 会在机器上启动一个 Http Server，该 Server 会与 Sentinel 控制台做交互。
+        # 比如 Sentinel 控制台添加了 1 个限流规则，会把规则数据 push 给这个 Http Server 接收，Http Server 再将规则注册到 Sentinel 中。
+        port: 8719
+      # 配置限流响应
+      scg:
+        fallback:
+          mode: response
+          # 响应状态
+          response-status: 429
+          # 响应体
+          response-body: '{"code": 429, "msg": "请求限流"}'
+    gateway:
+      routes:
+      - id: portal-server
+        uri: lb://portal-server
+        predicates:
+        - Path=/portal/**
+#        filters:
+#        - StripPrefix=1
