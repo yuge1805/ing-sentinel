@@ -5,6 +5,10 @@ server:
   port: 18080
   servlet:
     context-path: /portal
+#  # debug方便，限制tomcat线程数
+#  tomcat:
+#    threads:
+#      max: 3
 
 spring:
   application:
@@ -18,7 +22,7 @@ spring:
           - data-id: portal-server.yml
             refresh: true
       discovery:
-        server-addr: localhost:8848
+        server-addr: ${spring.cloud.nacos.config.server-addr}
     sentinel:
       # 取消Sentinel控制台懒加载
       # 默认情况下 Sentinel 会在客户端首次调用的时候进行初始化，开始向控制台发送心跳包
@@ -34,7 +38,7 @@ spring:
         # 限流
         flow:
           nacos:
-            server-addr: localhost:8848
+            server-addr: ${spring.cloud.nacos.config.server-addr}
             namespace:
             group-id: SENTINEL_GROUP
             data-id: ${spring.application.name}-flow-rules
@@ -43,7 +47,7 @@ spring:
         # 熔断降级
         degrade:
           nacos:
-            server-addr: localhost:8848
+            server-addr: ${spring.cloud.nacos.config.server-addr}
             namespace:
             group-id: SENTINEL_GROUP
             data-id: ${spring.application.name}-degrade-rules
